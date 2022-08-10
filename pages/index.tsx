@@ -44,6 +44,7 @@ const Home: NextPage = () => {
                 <Image className="w-full h-[250px] md:w-[350px] md:h-[180px] bg-gradient-to-r from-cyan-300 to-blue-500 rounded-md shadow-lg md:ml-12" 
                 src={whitelist}
                 alt='project'
+                priority
                 />
               </a>
 
