@@ -12,6 +12,10 @@ function Footer() {
             email,
             message
         }
+        fetch('/api/contact', {
+          method: 'post',
+          body: JSON.stringify(data),
+        });
         console.log(data)
     }
 
