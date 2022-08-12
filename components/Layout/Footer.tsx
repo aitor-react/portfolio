@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="pb-20">
           <div className="form-group mb-6">
             <input
               className="form-control block
