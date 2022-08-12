@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Title from "../core/Title";
 
 
 function Footer() {
@@ -21,6 +22,11 @@ function Footer() {
 
   return (
     <div>
+      <div className="py-12">
+        <Title
+          title="Get in touch"
+          style="gradient"/>
+      <div/>
         <form onSubmit={handleSubmit} className="pb-20">
           <div className="form-group mb-6">
             <input
@@ -93,28 +99,29 @@ function Footer() {
             required        >
           </textarea>
         </div>
-        <button 
-          type="submit" 
-          className="
-            w-full
-            px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            transition
-            duration-150
-            ease-in-out">Send
+          <button 
+            type="submit" 
+            className="
+              w-full
+              px-6
+              py-2.5
+              bg-blue-600
+              text-white
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              rounded
+              shadow-md
+              hover:bg-blue-700 hover:shadow-lg
+              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+              active:bg-blue-800 active:shadow-lg
+              transition
+              duration-150
+              ease-in-out">Send
           </button>
         </form>
+      </div>
     </div>
   )
 }

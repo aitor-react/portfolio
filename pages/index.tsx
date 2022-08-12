@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
         {/* Hero Section */ }
         <section className="py-12">
-          <HeroPic />
+          {/*<HeroPic />*/}
           <HeadingWithText
             title="Hi! I'm Aitor,"
             style="gradient"
