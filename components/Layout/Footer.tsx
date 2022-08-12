@@ -17,30 +17,99 @@ function Footer() {
 
   return (
     <div>
-        <form onSubmit={handleSubmit} className="">
-          <label htmlFor="name">Name:</label>
-          <input
-            id="name"
-            type="text"
-            onChange={e => setName(e.target.value)}
-            required
-          />
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="email"
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-          <label htmlFor="message">Message:</label>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group mb-6">
+            <input
+              className="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="name"
+              type="text"
+              onChange={e => setName(e.target.value)}
+              placeholder="Name"
+              required
+            />
+          </div>  
+          <div className="form-group mb-6">
+            <input 
+              type="email" 
+              id="email"
+              className="form-control block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Email address"
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+          </div>
+        <div className="form-group mb-6">
           <textarea
+            className="
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="message"
-            type="textarea"
             rows="3"
+            placeholder="Message"
             onChange={e=> setMessage(e.target.value)}
-            required
-          />
-          <button type="submit">Send</button>
+            required        >
+          </textarea>
+        </div>
+        <button 
+          type="submit" 
+          className="
+            w-full
+            px-6
+            py-2.5
+            bg-blue-600
+            text-white
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            rounded
+            shadow-md
+            hover:bg-blue-700 hover:shadow-lg
+            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-blue-800 active:shadow-lg
+            transition
+            duration-150
+            ease-in-out">Send
+          </button>
         </form>
     </div>
   )
