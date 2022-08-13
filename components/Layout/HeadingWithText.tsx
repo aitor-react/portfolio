@@ -8,15 +8,14 @@ type HeadingWithText = {
     style?: string;
     text: string;
     label?: string;
-    href?: string;
 }
 
-export default function HeadingWithText({title, style, text, label, href} : HeadingWithText) {
+export default function HeadingWithText({title, style, text, label} : HeadingWithText) {
   return (
     <>
         <Title title={title} style={style} />
         <Text text={text} />
-        <IconLink label={label} href={href}/>
+        <IconLink label={label}/>
     </>
   )
 }
