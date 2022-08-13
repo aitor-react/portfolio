@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import React from "react";
-import HeroPic from "../components/core/HeroPic";
 import Title from "../components/core/Title";
 import HeadingWithText from "../components/Layout/HeadingWithText";
 import whitelist from '/public/whitelist.png'
@@ -16,10 +15,7 @@ const Home: NextPage = () => {
         <title>{"Aitor's Portfolio"}</title>
       </Head>
       <main>
-
-        {/* Hero Section */ }
         <section className="py-12">
-          {/*<HeroPic />*/}
           <HeadingWithText
             title="Hi! I'm Aitor,"
             style="gradient"
