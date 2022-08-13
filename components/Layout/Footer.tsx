@@ -1,34 +1,40 @@
-import {useState} from "react";
+import React from "react";
+import { useFormik } from "formik";
 import Title from "../core/Title";
+import * as Yup from 'yup';
 
+const Footer = () => {
 
-function Footer() {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [message, setMessage] = useState('')
-
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        const data = {
-            name,
-            email,
-            message
-        }
-        fetch('/api/contact', {
-          method: 'post',
-          body: JSON.stringify(data),
-        });
-        console.log(data)
-    }
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      message: '',
+      email: '',
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(15, 'Must be 15 characters or less')
+        .required('Required'),
+      message: Yup.string()
+        .min(20, 'Must be 20 characters or more')
+        .required('Required'),
+      email: Yup.string().email('Invalid email address').required('Required'),
+    }),
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2))
+    },
+  });
 
   return (
-    <div>
-      <div className="py-12">
-        <Title
-          title="Get in touch"
-          style="gradient"/>
-      <div/>
-        <form onSubmit={handleSubmit} className="pb-20">
+    
+        <div className="py-12">
+            <Title
+              title="Get in touch"
+              style="gradient"/>
+        <div/>
+        <form onSubmit={formik.handleSubmit} className="pb-20">
           <div className="form-group mb-6">
+            <label htmlFor="firstName"></label>
             <input
               className="form-control block
               w-full
@@ -44,41 +50,20 @@ function Footer() {
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="name"
+              id="firstName"
               type="text"
-              onChange={e => setName(e.target.value)}
               placeholder="Name"
-              required
+              {...formik.getFieldProps('firstName')}
             />
-          </div>  
-          <div className="form-group mb-6">
-            <input 
-              type="email" 
-              id="email"
-              className="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="Email address"
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
+            {formik.touched.firstName && formik.errors.firstName ? (
+              <div>{formik.errors.firstName}</div>
+            ) : null}
           </div>
-        <div className="form-group mb-6">
-          <textarea
-            className="
-              form-control
-              block
+
+          <div className="form-group mb-6">
+            <label htmlFor="email"></label>
+            <input 
+              className="form-control block
               w-full
               px-3
               py-1.5
@@ -92,15 +77,45 @@ function Footer() {
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="email"
+              type="email"
+              placeholder="Email address"
+              {...formik.getFieldProps('email')}
+            />
+            {formik.touched.email && formik.errors.email ? (
+            <div>{formik.errors.email}</div>
+            ) : null}
+          </div>
+
+          <div className="form-group mb-6">
+            <label htmlFor="message"></label>
+            <textarea
+            className="form-control block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="message"
             placeholder="Message"
-            onChange={e=> setMessage(e.target.value)}
-            required        >
-          </textarea>
-        </div>
-          <button 
-            type="submit" 
-            className="
+            {...formik.getFieldProps('message')}>
+            </textarea>
+            {formik.touched.message && formik.errors.message ? (
+              <div>{formik.errors.message}</div>
+            ) : null}
+          </div>
+          
+          <button
+          type="submit"
+          className="
               w-full
               px-6
               py-2.5
@@ -117,12 +132,11 @@ function Footer() {
               active:bg-blue-800 active:shadow-lg
               transition
               duration-150
-              ease-in-out">Send
-          </button>
+              ease-in-out"
+          >Send</button>
         </form>
-      </div>
     </div>
   )
-}
+};
 
 export default Footer;
