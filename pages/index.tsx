@@ -6,6 +6,7 @@ import Title from "../components/core/Title";
 import HeadingWithText from "../components/Layout/HeadingWithText";
 import whitelist from '/public/whitelist.png'
 import mynft from '/public/mynft.png' 
+import countries from '/public/countries.png' 
 
 import Button from "../components/core/Button";
 
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
                   2022
                 </span>
                 <HeadingWithText
-                  title="NFT Mint Whitelist"
+                  title="Crypto Devs Whitelist"
                   text="This site allows the first 10 users to enter a whitelist. It's deployed in the Goerli testnet which is needed to interact with the contract"
                   label="Built using React, Hardhat, Solidity, Ethers, Next"
                 />
@@ -90,9 +91,9 @@ const Home: NextPage = () => {
             className="flex flex-col space-y-8 mt-4 md:flex-row-reverse md:justify-between md:items-center md:space-y-0">
 
               {/*Image Container*/}
-              <a href="https://github.com/aitor-react/NFT-collection-whitelist" target='_blank' rel=" noopener noreferrer">
+              <a href="https://github.com/aitor-react/world-weather" target='_blank' rel=" noopener noreferrer">
                 <Image className="w-full h-[250px] md:w-[350px] md:h-[180px] bg-gradient-to-r from-cyan-300 to-blue-500 rounded-md shadow-lg md:ml-12" 
-                src={whitelist}
+                src={countries}
                 alt='project'
                 priority
                 />
@@ -104,9 +105,9 @@ const Home: NextPage = () => {
                   2022
                 </span>
                 <HeadingWithText
-                  title="NFT Collection Whitelist"
-                  text="This site allows the first 10 users to enter a whitelist. It's deployed in the Goerli testnet which is needed to interact with the contract"
-                  label="Built using Hardhat, React, Ethers, Next"
+                  title="World Weather"
+                  text="Search for a country to see the weather in real time and other interesting facts"
+                  label="Built using React, React Router and styled components"
                 />
               </div>
             </div>
