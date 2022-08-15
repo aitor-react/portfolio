@@ -1,43 +1,35 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Title from "../core/Title";
 import * as Yup from 'yup';
 
 const Footer = () => {
-
-  const formik = useFormik({
-    initialValues: {
-      firstName: '',
-      message: '',
-      email: '',
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string()
-        .min(3, 'Name must be at least 3 characters long')
-        .required('Required'),
-      message: Yup.string()
-        .min(20, 'Message must be 20 characters or more')
-        .required('Required'),
-      email: Yup.string()
-        .email('Invalid email address')
-        .required('Required'),
-    }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
-    },
-  });
-
   return (
-    
-        <div className="py-12">
-            <Title
-              title="Get in touch"
-              style="gradient"/>
-        <div/>
-        <form onSubmit={formik.handleSubmit} className="pb-20">
+    <Formik
+      initialValues= {{firstName: '',message: '',email: ''}}
+      validationSchema={Yup.object({
+        firstName: Yup.string()
+          .min(3, 'Name must be at least 3 characters long')
+          .required('Required'),
+        message: Yup.string()
+          .min(20, 'Message must be 20 characters or more')
+          .required('Required'),
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
+      })}
+      onSubmit={(values, actions) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2))
+          actions.setSubmitting(false)
+        }, 400);
+      }}
+    >
+      <Form className="pb-20">
+        
           <div className="form-group mb-6">
             <label htmlFor="firstName"></label>
-            <input
+            <Field
               className="form-control block
               w-full
               px-3
@@ -54,17 +46,16 @@ const Footer = () => {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="firstName"
               type="text"
+              label="firstName"
+              name="firstName"
               placeholder="Name"
-              {...formik.getFieldProps('firstName')}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
-            ) : null}
+            <ErrorMessage name="firstName" />
           </div>
 
           <div className="form-group mb-6">
             <label htmlFor="email"></label>
-            <input 
+            <Field 
               className="form-control block
               w-full
               px-3
@@ -81,17 +72,17 @@ const Footer = () => {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="email"
               type="email"
+              label="email"
+              name="email"
               placeholder="Email address"
-              {...formik.getFieldProps('email')}
             />
-            {formik.touched.email && formik.errors.email ? (
-            <div>{formik.errors.email}</div>
-            ) : null}
+            <ErrorMessage name="email" />
           </div>
 
           <div className="form-group mb-6">
             <label htmlFor="message"></label>
-            <textarea
+            <Field
+            as="textarea"
             className="form-control block
             w-full
             px-3
@@ -107,12 +98,11 @@ const Footer = () => {
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="message"
+            label="message"
+            name="message"
             placeholder="Message"
-            {...formik.getFieldProps('message')}>
-            </textarea>
-            {formik.touched.message && formik.errors.message ? (
-              <div>{formik.errors.message}</div>
-            ) : null}
+            />
+            <ErrorMessage name="message" />
           </div>
           
           <button
@@ -134,11 +124,10 @@ const Footer = () => {
               active:bg-blue-800 active:shadow-lg
               transition
               duration-150
-              ease-in-out"
-          >Send</button>
-        </form>
-    </div>
-  )
+              ease-in-out">Send</button>
+        </Form>
+    </Formik>  
+  );
 };
 
 export default Footer;
