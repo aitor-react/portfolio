@@ -13,12 +13,14 @@ const Footer = () => {
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
+        .min(3, 'Name must be at least 3 characters long')
         .required('Required'),
       message: Yup.string()
-        .min(20, 'Must be 20 characters or more')
+        .min(20, 'Message must be 20 characters or more')
         .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Required'),
     }),
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2))
