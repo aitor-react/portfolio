@@ -25,6 +25,7 @@ const Home: NextPage = () => {
             style="gradient"
             text="I'm a self-taught Frontend Developer based in Prague, Czech Republic, originally from Spain. Apart from web2 apps I'm very passionate about Web3 and decentralized applications built using the Ethereum Virtual Machine. Feel free lo look around and check some of the highlighted projects." 
           />
+          <Button lable="View all projects" />
         </section>
         {/* Projects Section */ }
         <section className="py-12">
@@ -48,9 +49,6 @@ const Home: NextPage = () => {
 
               {/*Heading with text*/}
               <div>
-                <span className="text-sm text-gray-400 font-light">
-                  2022
-                </span>
                 <HeadingWithText
                   title="Crypto Devs Whitelist"
                   text="This site allows the first 10 users to enter a whitelist. It's deployed in the Goerli testnet which is needed to interact with the contract"
@@ -74,9 +72,6 @@ const Home: NextPage = () => {
 
               {/*Heading with text*/}
               <div>
-                <span className="text-sm text-gray-400 font-light">
-                  2022
-                </span>
                 <HeadingWithText
                   title="ERC721 NFT collection"
                   text="Connect your wallet and mint a randomly generated SVG token in the Goerli testnet!"
@@ -100,9 +95,6 @@ const Home: NextPage = () => {
 
               {/*Heading with text*/}
               <div>
-                <span className="text-sm text-gray-400 font-light">
-                  2022
-                </span>
                 <HeadingWithText
                   title="World Weather"
                   text="Search for a country to see the weather in real time and other interesting facts"
@@ -126,9 +118,6 @@ const Home: NextPage = () => {
 
               {/*Heading with text*/}
               <div>
-                <span className="text-sm text-gray-400 font-light">
-                  2022
-                </span>
                 <HeadingWithText
                   title="Quizz game"
                   text="Try score the highest points in the quizz. Even if you miss you still have the chance to learn where your mistakes were made!"

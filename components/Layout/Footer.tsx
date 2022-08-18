@@ -1,12 +1,21 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import Title from "../core/Title";
 import * as Yup from 'yup';
+import Title from "../core/Title";
 
 const Footer = () => {
   return (
+    <>
+    <Title
+      title="Get in touch"
+      style="gradient"
+    />
     <Formik
-      initialValues= {{firstName: '',message: '',email: ''}}
+      initialValues= {{
+        firstName: '',
+        message: '',
+        email: ''
+      }}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .min(3, 'Name must be at least 3 characters long')
@@ -18,13 +27,14 @@ const Footer = () => {
           .email('Invalid email address')
           .required('Required'),
       })}
-      onSubmit={(values, actions) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          actions.setSubmitting(false)
-        }, 400);
+      onSubmit={(data, { setSubmitting }) => {
+        setSubmitting(true);
+        console.log("submit: ", data);
+        setSubmitting(false);
       }}
     >
+      {({ isSubmitting }) => (
+      
       <Form className="pb-20">
         
           <div className="form-group mb-6">
@@ -107,6 +117,7 @@ const Footer = () => {
           
           <button
           type="submit"
+          disabled={isSubmitting}
           className="
               w-full
               px-6
@@ -126,7 +137,9 @@ const Footer = () => {
               duration-150
               ease-in-out">Send</button>
         </Form>
-    </Formik>  
+      )}
+    </Formik> 
+    </> 
   );
 };
 
